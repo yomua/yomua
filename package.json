@@ -1,0 +1,28 @@
+{
+  "name": "yomua",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yomua/yomua.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yomua/yomua/issues"
+  },
+  "homepage": "https://github.com/yomua/yomua#readme",
+  "dependencies": {
+    "commitizen": "^4.2.3"
+  }
+}
