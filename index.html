@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TodoList</title>
-    <style>
-      #root {
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
-      * {
-        padding: 0px;
-        margin: 0px;
-        box-sizing: border-box;
-      }
-      p {
-        margin: 0;
-      }
-      .icon {
-        width: 1em;
-        height: 1em;
-        vertical-align: -0.15em;
-        fill: currentColor;
-        overflow: hidden;
-      }
 
-      li {
-        list-style: none;
-      }
-    </style>
-    <link rel="stylesheet" href="./umi.d107c938.css" />
-    <script>
-      window.routerBase = "/";
-    </script>
-    <script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TodoList</title>
+  <style>
+    #root {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    * {
+      padding: 0px;
+      margin: 0px;
+      box-sizing: border-box;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+
+    li {
+      list-style: none;
+    }
+  </style>
+  <link rel="stylesheet" href="./umi.d107c938.css" />
+  <script>
+    window.routerBase = "/";
+  </script>
+  <script>
       //! umi version: 3.3.3
-    </script>
-  </head>
+  </script>
+</head>
 
-  <body>
-    <div id="root"></div>
+<body>
+  <div>
+    <h1><a></a></h1>
+  </div>
+  <div id="root"></div>
 
-    <script src="./umi.ff869c1a.js"></script>
-  </body>
+  <script src="./umi.dc8c8433.js"></script>
+  <script>
+    const a = document.querySelector('a');
+    (function isBrowser() {
+      var agent = navigator.userAgent.toLowerCase()
+      console.log(agent)
+      if (agent.indexOf('chrome') === -1) {
+        a.setAttribute('href','https://www.google.com/intl/zh-TW/chrome/')
+        a.setAttribute('target','_blank')
+
+        a.innerHTML = '请用谷歌浏览器使用'
+
+      }
+    })()
+  </script>
+</body>
+
 </html>
