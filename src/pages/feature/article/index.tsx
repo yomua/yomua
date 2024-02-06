@@ -4,10 +4,11 @@ import { memo, useMemo, useCallback, useState, useEffect } from 'react'
 import { Tree, Skeleton } from 'antd'
 import { SkeletonParagraphProps } from 'antd/lib/skeleton/paragraph'
 import MarkNavbar from 'markdown-navbar'
+import log from '@yomua/y-tlog'
 import classnames from '@yomua/y-classnames'
 import { urlChange } from '@yomua/y-screw'
 import EventEmitter from '@yomua/y-eventemitter'
-import log from '@yomua/y-tlog'
+import { useWindowEventListener } from '@yomua/y-hooks'
 
 import { useTheme } from '@/hooks'
 import request from '@/utils/request'
@@ -21,6 +22,9 @@ import {
     LOCAL_STORAGE_NAME,
     ARTICLE_SUFFIX_NAME,
 } from '@/utils/constant'
+import { useSelector, useDispatch } from '@/store'
+
+import { setSearchValue } from '@/storeData/article'
 
 import './markNavbar.css'
 import style from './index.less'
@@ -32,6 +36,9 @@ const PARAGRAPH: SkeletonParagraphProps = { rows: 20 }
 
 function Article() {
     const theme = useTheme()
+
+    const dispatch = useDispatch()
+    const state = useSelector((state) => state)
 
     const [articleLoading, setArticleLoading] = useState(false)
 
@@ -170,6 +177,16 @@ function Article() {
         [],
     )
 
+    // 监听键盘 CTRL + SHIFT + F 按下, 从而打开文章搜索框, 用来搜索文章目录, 或文章内容.
+    useWindowEventListener('keydown', function (event) {
+        // 检查按下的键是否符合组合
+        if (event.ctrlKey && event.shiftKey && event.key === 'F') {
+            event.preventDefault()
+            // 在这里执行你的操作
+            log('CTRL + Shift + F 被按下！')
+        }
+    })
+
     /**
      * 刷新/切换路由，然后再点进来时，加载最后一次点击的目录的文件数据
      * 注意: 启动本地服务, 不会走 public/404.html, 并且类似 URL: /feature/article/xx.md 是可以获取数据的.
@@ -279,13 +296,11 @@ function Article() {
         <div
             className={classnames(style.article, {
                 [style[`article-${theme}`]]: theme,
-            })}
-        >
+            })}>
             <div
                 className={classnames(style.directoryTreeBox, {
                     [style.showDirectorOnlyArticle]: isOpenDirectoryOnlyArticle,
-                })}
-            >
+                })}>
                 <DirectoryTree
                     className={style.directoryTree}
                     treeData={(fileTree as any[]) || []}
@@ -300,14 +315,12 @@ function Article() {
                 active
                 paragraph={PARAGRAPH}
                 loading={isHaveSkeleton}
-                className={style.skeleton}
-            >
+                className={style.skeleton}>
                 <Markdown
                     className={classnames(style.markdown, {
                         [style.hideMarkdownOnlyArticle]:
                             isOpenDirectoryOnlyArticle,
-                    })}
-                >
+                    })}>
                     {markdownData}
                 </Markdown>
             </Skeleton>
