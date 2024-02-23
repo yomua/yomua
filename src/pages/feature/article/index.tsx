@@ -54,6 +54,7 @@ function Article() {
 
     // 点击 .md 文件 =>  D:/code/yomua/public/article/0_base/函数式编程/函数式编程.md
     const [selectedKey, setSelectedKey] = useState('')
+    console.log('🚀 ~ Article ~ selectedKey:', selectedKey)
 
     const fileTree = useMemo(() => createFileTree(articleDir), [articleDir])
 
@@ -167,6 +168,11 @@ function Article() {
         setExpandedKeys(expandKeys)
     }, [])
 
+    const handleSearchArticle = useCallback((event) => {
+        const { value } = event.target
+        console.log('🚀 ~ handleSearchArticle ~ value:', value, fileTree)
+    }, [])
+
     // 如果 queryString 包含 redirected=true, 则此 hook 触发.
     useRedirected(
         {
@@ -187,8 +193,7 @@ function Article() {
         }
     })
 
-    /**
-     * 刷新/切换路由，然后再点进来时，加载最后一次点击的目录的文件数据
+    /** 刷新/切换路由，然后再点进来时，加载最后一次点击的目录的文件数据
      * 注意: 启动本地服务, 不会走 public/404.html, 并且类似 URL: /feature/article/xx.md 是可以获取数据的.
      * why? 可能是本地启动服务数据加载不一样吧; 如果先打包(yarn build), 然后将打包文件放入服务器(http-server dist)
      * 这样再访问 /feature/article/xx.md 就没有问题, 会走 public/404.html
@@ -301,6 +306,7 @@ function Article() {
                 className={classnames(style.directoryTreeBox, {
                     [style.showDirectorOnlyArticle]: isOpenDirectoryOnlyArticle,
                 })}>
+                <input onChange={handleSearchArticle} />
                 <DirectoryTree
                     className={style.directoryTree}
                     treeData={(fileTree as any[]) || []}

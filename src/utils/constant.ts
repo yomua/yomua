@@ -18,7 +18,7 @@ export const CONVERT_TYPE_MAP: Record<
     object: (value) => {
         try {
             return JSON.parse(value)
-        } catch (error) {
+        } catch (error: any) {
             log.group('JSON.parse 失败', [
                 { type: 'error', message: error },
                 {
@@ -33,7 +33,7 @@ export const CONVERT_TYPE_MAP: Record<
     array: (value) => {
         try {
             return JSON.parse(value)
-        } catch (error) {
+        } catch (error: any) {
             log.group('JSON.parse 失败', [
                 { type: 'error', message: error },
                 {

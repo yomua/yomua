@@ -61,6 +61,9 @@ export function useRedirected(
             return
         }
 
+        // 设置相关 state 数据
+        // 设置相关数据到 local storage
+        // 更改 url: 显示更为友好的 url 地址
         async function getArticle() {
             // 只有当 try...catch 没有运行完毕时, 才能捕获错误;
             // 所以对于使用 await promise 这样语法代码来说, 相当于 try...catch 再运行期间就能捕获 promise 中的错误
