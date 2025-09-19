@@ -331,7 +331,7 @@ X-Cache-Info: cached
   `Access-Control-Expose-Headers: <field-name>[, <field-name>]*` 
   额外允许访问的响应头
 
-注意: `Access-Control-Allow-Origin: *` 是无效的, [跨域请求时, 响应头不允许设置为通配符](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%99%84%E5%B8%A6%E8%BA%AB%E4%BB%BD%E5%87%AD%E8%AF%81%E7%9A%84%E8%AF%B7%E6%B1%82%E4%B8%8E%E9%80%9A%E9%85%8D%E7%AC%A6), 必须指定具体的源. 
+注意: 如果需要携带 Cookie, 则 `Access-Control-Allow-Origin: *` 是无效的, [跨域且携带附带身份凭证的请求时, 响应头不允许设置为通配符](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%99%84%E5%B8%A6%E8%BA%AB%E4%BB%BD%E5%87%AD%E8%AF%81%E7%9A%84%E8%AF%B7%E6%B1%82%E4%B8%8E%E9%80%9A%E9%85%8D%E7%AC%A6), 必须指定具体的源. 
 
 TIP: 如果仍然不能解决跨域请求不携带凭据(比如: cookie) 的问题, 则: 
 

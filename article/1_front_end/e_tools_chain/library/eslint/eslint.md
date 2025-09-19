@@ -323,6 +323,20 @@ ASI 机制在这里并不会自动的为第一行末端插入分号，而这就�
 
 所以当执行该代码时，会出现运行时错误：index.html:16 Uncaught TypeError: {} is not a function
 
+# 配合 lint-staged, husky
+
+[lint-staged](https://www.npmjs.com/package/lint-staged): 将指定的文件的路径传递给任务.
+
+[husky](https://typicode.github.io/husky/): 在 git 某个生命周期时运行的钩子, 如: commit 前.
+
+如何配合: 使用 husky 在 git commit 之前触发 lint-staged, 让 eslint 只检测指定的路径 (如: 只检测更改过的文件的路径), 从而查找出一些潜在危险.
+
+**FAQ**
+
+- 如果你复制其他项目的配置, 包括 `.husky` 文件, 可能 `git commit` 之前, 不会触发 husky, 需要使用命令重新初始 `.husky`
+
+  `npx husky init`
+
 # 参考文档
 
 - [Eslint 官方文档](https://cn.eslint.org/)
