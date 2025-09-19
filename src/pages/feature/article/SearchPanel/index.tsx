@@ -46,7 +46,6 @@ const SearchPanel = (props: SearchPanelProps) => {
 
     const dispatch = useDispatch()
     const searchValue = useSelector((state) => state?.article?.searchValue)
-    console.log('🚀 ~ SearchPanel ~ searchValue:', searchValue)
 
     const searchRef = useRef<HTMLInputElement>(null)
 

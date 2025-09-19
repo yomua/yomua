@@ -1,18 +1,17 @@
 import { memo } from 'react'
 import { history } from 'umi'
 import { memoizeFn } from '@yomua/y-screw'
-import { Button, message, Upload } from 'antd'
 
 import { Card } from '@/component'
-
-import { FeatureList } from '../constant'
+import { FeatureList } from '@/pages/constant'
+import type { HistoryPushState } from '@/utils/utils.d'
 
 import style from './index.less'
 
-function handleGotoFeature(featureName: string) {
+function handleGotoFeature(featureName: string, state: HistoryPushState) {
     return memoizeFn(
         () => {
-            history.push(`/feature/${featureName}`)
+            history.push(`/feature/${featureName}`, state)
         },
         {
             resolver: featureName,
@@ -47,11 +46,14 @@ function Index() {
                     time,
                     title,
                     author,
+                    isShow,
                     target,
                     previewImg,
                     description,
                     lastUpdateTime,
                 } = card
+
+                if (!isShow) return
 
                 return (
                     <Card
@@ -64,7 +66,7 @@ function Index() {
                         previewImg={previewImg}
                         description={description}
                         lastUpdateTime={lastUpdateTime}
-                        onClick={handleGotoFeature(target)}
+                        onClick={handleGotoFeature(target, { isShow })}
                     />
                 )
             })}

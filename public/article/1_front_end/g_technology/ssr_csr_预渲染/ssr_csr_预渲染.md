@@ -8,8 +8,12 @@ SSR：解决 [FP 和 FMP](https://github.com/LuckyWinty/fe-weekly-questions/issu
 
 SSR 的项目通常是由前端通过 [Node](https://nodejs.org/en) 实现，并且通常会将前端的静态资源和 node 混在一起写。
 
+但是部署时, 对于 SSR 部分的代码, 需要放在支持 JS 代码运行的服务器中
+
 - 即：如果没有 SSR 时，前端项目只需要负责对组件、CSS、JS 等这些静态资源的开发。
   但是如果要写 SSR，前端项目还需要引入 node，在 node 中编写接口，当访问此接口时返回 html 给前端，前端再渲染。
+
+  这可以通过 [Next.js](https://nextjs.org/docs/getting-started/installation) 工具简化.
 
 ## 流程
 
@@ -52,8 +56,10 @@ SSR 的项目通常是由前端通过 [Node](https://nodejs.org/en) 实现，并
 - 同构：
   有一个公共组件 A ，node 会把组件 A 转成 html，返回给前端，搞定 FP 和 FMP。
 
-  组件 A 将通过 React API，webpack 被编译成 js.
+  组件 A 将通过 React API，webpack 等工具被编译成 js.
   前端将拿到 html，浏览器将渲染 html 并加载里面，组件 A 编译过后的 JS 文件，执行这份 JS 文件，让 JS 找到 html 中应该有的事件并重新绑定。
+
+  同构就是[水合](https://zh-hans.react.dev/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html)的意思.
 
 - 为什么要有同构？
 
@@ -64,7 +70,7 @@ SSR 的项目通常是由前端通过 [Node](https://nodejs.org/en) 实现，并
      服务端返回的是字符串
 
      服务端没有script
-  
+
 - 注水和脱水
   即：服务端将初始数据共享给客户端需要同构的组件。
   也是利用同构的原理。

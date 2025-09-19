@@ -182,7 +182,7 @@ props 是接收来自父组件的数据（data{} / data()）给子组件使用�
 
 - 生命周期和生命周期钩子函数，***参见：<UseCustomElements.md>***
 
-![](/picture//Vue生命周期钩子函数图示.png)
+![](../picture/Vue生命周期钩子函数图示.png)
 
 （Vue生命周期钩子函数图示）
 
@@ -495,7 +495,7 @@ vm.$watch('a', function (newValue, oldValue) {
 
 [this.$route](https://router.vuejs.org/zh/api/#%E8%B7%AF%E7%94%B1%E5%AF%B9%E8%B1%A1)：则是表示当前正在跳转的路由对象，该对象是只读对象，里面可以获取name、path、query、params等
 
-![](/picture//VueRouter-$routerAND$route.png)
+![](../picture/VueRouter-$routerAND$route.png)
 
 （$router 和 $route）
 

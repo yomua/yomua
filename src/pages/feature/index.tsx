@@ -1,25 +1,26 @@
 /* eslint-disable react/no-children-prop */
-import { ReactNode, memo } from 'react'
+import { memo } from 'react'
 import { useLocation, useParams, Location } from 'react-router-dom'
 
 import Error404 from '@/pages/404'
+import type { HistoryPushState } from '@/utils/utils.d'
 
-import { FeatureName } from '../constant'
+import { FeatureName } from '@/pages/constant'
 
 import Todo from './todo'
 import Gpt3 from './gpt3'
 import Three from './three'
 import Article from './article'
-import style from './index.less'
+import Style from './index.less'
 
 function renderFeature(
     name: FeatureName,
     options: {
-        location: Location
+        location: Location<HistoryPushState>
     },
 ) {
     const {
-        location: { pathname = '' },
+        location: { pathname = '', state = { isShow: false } },
     } = options ?? {}
 
     // 说明当前路由是 feature/article 的标题，就重定向回去
@@ -30,6 +31,9 @@ function renderFeature(
         return <Article />
     }
 
+    // 对 isShow=false 的功能, 直接返回 404, 防止直接输入地址进入隐藏的功能
+    if (!state.isShow) return <Error404 />
+
     switch (name) {
         case FeatureName.Three:
             return <Three />
@@ -39,7 +43,7 @@ function renderFeature(
 
         case FeatureName.Todo:
             return (
-                <div className={style.todoBox}>
+                <div className={Style.todoBox}>
                     <Todo />
                 </div>
             )
@@ -54,7 +58,7 @@ function Feature() {
     const location = useLocation()
 
     return (
-        <div className={style.feature}>{renderFeature(name, { location })}</div>
+        <div className={Style.feature}>{renderFeature(name, { location })}</div>
     )
 }
 
