@@ -91,7 +91,7 @@ const getEnvValue = <ReturnType extends JSValueType, DataType = ReturnType>(
     const enValue = process.env[envKey] ?? ''
 
     if (returnType === 'array' && enValue.includes(',')) {
-        return enValue.toString().split(',') as EnvValueType<
+        return enValue.toString().split(',')?.filter(Boolean) as EnvValueType<
             ReturnType,
             DataType
         >

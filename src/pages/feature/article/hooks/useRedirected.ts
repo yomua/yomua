@@ -55,7 +55,7 @@ export default function useRedirected(
                     )
                 ) {
                     throw new Error(
-                        `filePathRemoveFeature: is not a ${ARTICLE_SUFFIX_NAME} file`,
+                        `${filePathRemoveFeature} is not a ${ARTICLE_SUFFIX_NAME} file`,
                     )
                 }
 

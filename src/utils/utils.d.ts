@@ -51,6 +51,4 @@ export type ArticleFileTree = {
     children?: ArticleFileTree[] // when directory
 }
 
-export type HistoryPushState = {
-    isShow?: boolean // 是否显示 card, 以及决定能不能直接从 url 访问到 card
-}
+export type HistoryPushState = {}

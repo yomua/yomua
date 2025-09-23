@@ -2,7 +2,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import Cute from '@/assets/img/cute.jpeg'
 import ARTICLE_DIR from '@/article_dir.js'
-import { HistoryPushState } from '@/utils/utils.d'
 import CompressCute from '@/assets/img/compress_cute.jpeg'
 import { ARTICLE_COMMIT_LAST_DATE } from '@/utils/constant'
 
@@ -22,7 +21,7 @@ type FeatureType = {
     time?: string
     description?: string
     lastUpdateTime?: string
-    isShow?: HistoryPushState['isShow']
+    isShow?: boolean
     tag?: {
         name: string
         key?: string
@@ -32,23 +31,23 @@ type FeatureType = {
 }
 
 export const FeatureList: FeatureType[] = [
-    // {
-    //     isShow: false,
-    //     target: FeatureName.Three,
-    //     img: CompressCute,
-    //     previewImg: Cute,
-    //     title: 'Three',
-    //     author: 'Yomua',
-    //     time: '2023年08月22日',
-    //     description: 'Three.js',
-    //     tag: [
-    //         {
-    //             name: 'Three',
-    //             icon: 'cube',
-    //             color: '#ecb0c1',
-    //         },
-    //     ],
-    // },
+    {
+        isShow: false,
+        target: FeatureName.Three,
+        img: CompressCute,
+        previewImg: Cute,
+        title: 'Three',
+        author: 'Yomua',
+        time: '2023年08月22日',
+        description: 'Three.js',
+        tag: [
+            {
+                name: 'Three',
+                icon: 'cube',
+                color: '#ecb0c1',
+            },
+        ],
+    },
 
     {
         isShow: true,

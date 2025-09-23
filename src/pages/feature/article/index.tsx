@@ -44,7 +44,6 @@ const fileTree = createFileTree(articleDir)
 
 function Article() {
     const theme = useTheme()
-
     // const dispatch = useDispatch()
     // const state = useSelector((state) => state)
 
@@ -166,9 +165,6 @@ function Article() {
         dispatch({ type: 'setExpandedKeys', payload: expandKeys })
     }, [])
 
-    // 如果 queryString 包含 redirected=true, 则此 hook 触发.
-    useRedirected(dispatch, [])
-
     // 监听键盘 CTRL + SHIFT + F 按下, 从而打开文章搜索框, 用来搜索文章目录, 或文章内容.
     useWindowEventListener('keydown', function (event) {
         const isCtrlShiftX =
@@ -188,6 +184,9 @@ function Article() {
             })
         }
     })
+
+    // 如果 queryString 包含 redirected=true, 则此 hook 触发.
+    useRedirected(dispatch, [isRedirected])
 
     /** 刷新/切换路由，然后再点进来时，加载最后一次点击的目录的文件数据
      * 注意: 启动本地服务, 不会走 public/404.html, 并且类似 URL: /feature/article/xx.md 是可以获取数据的.
@@ -274,7 +273,7 @@ function Article() {
                         dispatch({ type: 'setArticleLoading', payload: false }),
                     )
             })
-    }, [])
+    }, [isRedirected])
 
     // 从 localStorage, 加载用户自定义展开的所有文章目录结构（若没有则使用默认目录）;
     // 且高亮显示最后一次用户选中的文章（若有）
@@ -308,7 +307,7 @@ function Article() {
                         ? localExpandedKeys
                         : DEFAULT_EXPANDED_KEYS,
             })
-    }, [])
+    }, [isRedirected])
 
     // 监听 Header - 打开菜单按钮点击事件; 用来控制 显示/隐藏 所有文章目录
     useEffect(() => {

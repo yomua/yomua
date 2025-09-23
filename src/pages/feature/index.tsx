@@ -20,10 +20,9 @@ function renderFeature(
     },
 ) {
     const {
-        location: { pathname = '', state = { isShow: false } },
+        location: { pathname = '', state = {} },
     } = options ?? {}
 
-    return <Article />
     // 说明当前路由是 feature/article 的标题，就重定向回去
     // 或 name.startsWith(FeatureName.Article) => 我们将路由模式改成了 history,
     // => 让 article 页面地址友好的显示为: https://www.whyhw.com/feature/article/xxx.md
@@ -31,9 +30,6 @@ function renderFeature(
     if (pathname.includes('heading') || name.startsWith(FeatureName.Article)) {
         return <Article />
     }
-
-    // 对 isShow=false 的功能, 直接返回 404, 防止直接输入地址进入隐藏的功能
-    // if (!state.isShow) return <Error404 />
 
     switch (name) {
         case FeatureName.Three:
@@ -55,9 +51,8 @@ function renderFeature(
 
 function Feature() {
     const { name } = useParams() as { name: FeatureName }
-    console.log('__ name__', name)
 
-    const location = useLocation()
+    const location = useLocation() as Location<HistoryPushState>
 
     return (
         <div className={Style.feature}>{renderFeature(name, { location })}</div>
