@@ -53,7 +53,7 @@ function Index() {
                     lastUpdateTime,
                 } = card
 
-                if (!isShow) return
+                // if (!isShow) return
 
                 return (
                     <Card

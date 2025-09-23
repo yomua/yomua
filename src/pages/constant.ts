@@ -32,23 +32,23 @@ type FeatureType = {
 }
 
 export const FeatureList: FeatureType[] = [
-    {
-        isShow: false,
-        target: FeatureName.Three,
-        img: CompressCute,
-        previewImg: Cute,
-        title: 'Three',
-        author: 'Yomua',
-        time: '2023年08月22日',
-        description: 'Three.js',
-        tag: [
-            {
-                name: 'Three',
-                icon: 'cube',
-                color: '#ecb0c1',
-            },
-        ],
-    },
+    // {
+    //     isShow: false,
+    //     target: FeatureName.Three,
+    //     img: CompressCute,
+    //     previewImg: Cute,
+    //     title: 'Three',
+    //     author: 'Yomua',
+    //     time: '2023年08月22日',
+    //     description: 'Three.js',
+    //     tag: [
+    //         {
+    //             name: 'Three',
+    //             icon: 'cube',
+    //             color: '#ecb0c1',
+    //         },
+    //     ],
+    // },
 
     {
         isShow: true,
@@ -68,34 +68,34 @@ export const FeatureList: FeatureType[] = [
         ],
     },
 
-    {
-        isShow: false,
-        target: FeatureName.Gpt3,
-        img: CompressCute,
-        previewImg: Cute,
-        title: 'GPT3',
-        author: 'Yomua',
-        time: '2023年02月19日 23:22',
-        description: 'gpt3 chat',
+    // {
+    //     isShow: false,
+    //     target: FeatureName.Gpt3,
+    //     img: CompressCute,
+    //     previewImg: Cute,
+    //     title: 'GPT3',
+    //     author: 'Yomua',
+    //     time: '2023年02月19日 23:22',
+    //     description: 'gpt3 chat',
 
-        tag: [
-            {
-                name: 'Open AI',
-                icon: 'earth-americas',
-                color: '#ecb0c1',
-            },
-            {
-                name: 'Chat Gpt',
-                icon: 'brain',
-                color: '#ecb0c1',
-            },
-            {
-                name: 'Gpt3',
-                icon: 'certificate',
-                color: '#ecb0c1',
-            },
-        ],
-    },
+    //     tag: [
+    //         {
+    //             name: 'Open AI',
+    //             icon: 'earth-americas',
+    //             color: '#ecb0c1',
+    //         },
+    //         {
+    //             name: 'Chat Gpt',
+    //             icon: 'brain',
+    //             color: '#ecb0c1',
+    //         },
+    //         {
+    //             name: 'Gpt3',
+    //             icon: 'certificate',
+    //             color: '#ecb0c1',
+    //         },
+    //     ],
+    // },
     {
         isShow: true,
         target: FeatureName.Todo,
