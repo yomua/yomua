@@ -32,7 +32,7 @@ function renderFeature(
     }
 
     // 对 isShow=false 的功能, 直接返回 404, 防止直接输入地址进入隐藏的功能
-    if (!state.isShow) return <Error404 />
+    // if (!state.isShow) return <Error404 />
 
     switch (name) {
         case FeatureName.Three:
