@@ -23,6 +23,7 @@ function renderFeature(
         location: { pathname = '', state = { isShow: false } },
     } = options ?? {}
 
+    return <Article />
     // 说明当前路由是 feature/article 的标题，就重定向回去
     // 或 name.startsWith(FeatureName.Article) => 我们将路由模式改成了 history,
     // => 让 article 页面地址友好的显示为: https://www.whyhw.com/feature/article/xxx.md
@@ -54,6 +55,7 @@ function renderFeature(
 
 function Feature() {
     const { name } = useParams() as { name: FeatureName }
+    console.log('__ name__', name)
 
     const location = useLocation()
 

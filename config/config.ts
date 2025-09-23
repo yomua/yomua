@@ -11,6 +11,13 @@ const getEnvConfig = () => {
 }
 
 export default defineConfig({
+    /**
+     * https://webpack.docschina.org/configuration/output/#outputpublicpath
+     * https://v3.umijs.org/zh-CN/config#publicpath
+     * 从哪个路径获取前端资源. 
+     * /: 通过根路径访问到前端资源, 如: 访问 http://www.whyh.com/a/b/c, 则从 http://www.whyh.com/ 开始查找前端资源
+     * ./: 从当前路径开始查找前端资源, 如: 访问 http://www.whyh.com/a/b/c, 则从 http://www.whyh.com/a/b/c 开始查找前端资源
+     */ 
     publicPath: '/',
     title: 'Yomua',
     favicon: '/assets/favicon.png',
