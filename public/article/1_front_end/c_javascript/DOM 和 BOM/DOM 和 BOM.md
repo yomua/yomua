@@ -3,7 +3,7 @@
 实现 Window 接口的 `window` 对象代表一个包含 DOM 文档*以及 BOM* 的窗口
 
 - 注意：这里的 BOM 用斜体表示，是因为 BOM 不是一个标准化的规则，它由每个浏览器各自实现。
-  
+
   但是有关 BOM 的属性/方法 仍挂载到 `window` 对象上，如：`window.location`, `window.alert`。
 
 而代表 DOM 的 `document` 对象作为一个属性挂载到 `window` 上 =>
@@ -32,7 +32,7 @@ DOM接口: 一系列接口的总成, 比如有实现了HTMLTableElement DOM 接�
 
 图1-2,则是节点和对象组成的结构集合----DOM树
 
-![](../../picture/DOM图1-2.png)
+![](/picture/DOM图1-2.png)
 
 ​                                                                    (图1-2)
 
@@ -102,7 +102,7 @@ DOM也是一种表现形式, 由节点和对象组成的结构集合的表现形
 
 这个文档对象模型DOM,由HTML文档对象模型被结构化而来. 而这就是DOM解析的文档的显示形式.
 
-![](../../picture/HTML DOM树.png)
+![](/picture/HTML DOM树.png)
 
 ​                                                                    (图1-1)
 
@@ -120,7 +120,7 @@ DOM也是一种表现形式, 由节点和对象组成的结构集合的表现形
 
 很明显的,当文档对象模型,即DOM被结构化成一个树型的图时,更能让我们直观的明白一个文档(页面)是如何被操作和访问的,即通过节点进行访问和操作,更易理解和阅读.
 
-![](../../picture/DOM图1-1.png)
+![](/picture/DOM图1-1.png)
 
 ​                                                                    (图1-2)
 
@@ -191,7 +191,7 @@ DOM是文档和编程语言之间的桥梁，是编程语言的接口。
 
 以上中除了<!DOCTYPE html> 其他都是节点(这是说明文档是该怎么被解析),或者说是对象,下图1-3则是与上面例子对应的 DOM树.
 
-![](../../picture/HTML DOM树所有内容都是节点or对象.png)
+![](/picture/HTML DOM树所有内容都是节点or对象.png)
 
 ​                                                            图1-3
 
@@ -264,14 +264,14 @@ HTML文档有了HTML DOM,在DOM树中所有节点(内容)都能被Javascript访�
 - 注意:在Gecko中,任意多个的空白符都将导致文本节点的插入,包括一个到多个空格符,换行符,制表符等等.
 
 - ​    
-  
+
   ```html
   <p>
   </p>
   ```
-  
+
   以上只有1个p元素,它看上去没有任何内容,若使用firstChild属性,会返回null吗?不,不会返回null,因为p元素节点中包含着一个回车符,而回车符也是节点对象.
-  
+
   `<p></p>`只有这样的元素节点对象使用firstChild属性所返回的值才是null
 
 此时若使用 `alert(x)`,获取到的p元素的第一个子节点为: **[object Text]**; 
@@ -299,9 +299,9 @@ JS亦是如此,如果没有DOM,JavaScript语言也不会有任何网页、XML页
 最开始的时候,JS和DOM是交织在一起的,它们可以说是不分彼此,但是最终还是演变成了两个独立的实体,JavaScript和DOM.  
 
 > 据我猜测: 这是由于利益分配不均衡而导致的,比如各个脚本语言都实现自己的DOM,导致一个脚本语言只能运行在特定的环境,
-> 
+>
 > 这全是为了抢夺市场(利益),而这导致整个网页时代进步缓慢,无法共用,互联等情况,所以W3C就制定了一个标注:DOM, 
-> 
+>
 > 让脚本语言去实现DOM,这样就不至于一个脚本语言只能特定的环境上运行,而是一个程序跑遍大江南北.
 
 不过即使演变成了两个独立的实体,但是JavaScript依然能操作DOM,只需要依靠实现DOM接口的对象即可. 而又因为如此,所有我们可以得出以下等式(公式):
@@ -382,31 +382,31 @@ $$
 ***代码解析***
 
 - **window.onload = function() {statements...};**
-  
+
   即当窗口被加载或当整个DOM可以被使用时,就调用实现DOM的Window接口的window对象,并执行其onload函数,
 
 - **document.creatElement('h1');**
-  
+
   使用实现DOM的Document接口的document对象,并调用其creatElement()函数(方法), 
-  
+
   也就是为整个文档(web页面)创建一个h1节点对象,在没有被DOM解析的结构集合,html页面的源码显示形式
-  
+
   中0,此时应该是创建h1元素.
 
 - **document.creatTextNode('Yomua')**
-  
+
   同上面那句一样,只不过其函数功能为:创建某个节点的文本(内容)为Yomua.
 
 - **h1.appendChild(h1_text);**
-  
+
   调用h1节点对象的appendChild()函数,其功能为: 为h1节点增加一个孩子内容, 其中内容是h1_text变量所存储的内容.
 
 - **document.body.appendChild(h1);**
-  
+
   和上面一个document一样的,只不过变成了: 使用文档的body节点对象,调用其appendChild()方法,添加一个孩子,其孩子为h1变量,
-  
+
   而h1变量的内容为: h1节点对象.即在HTML的源码显示形式上为h1元素.
-  
+
   而在逻辑树上则是将h1节点对象添加到body下面的分支上,以body为父亲.
 
 # 关于DOM接口和对象之间的关系
@@ -473,21 +473,21 @@ $$
 - ***document.getElementById("table");***
 
 - ***table.attributes;*** 
-  
+
   使用了实现Element接口和Node接口的对象,此时使用Element接口和Node接口的对象的名字,即对象引用为:table,并使用其实现了接口中的属性attributes,
-  
+
   *这里table因为不仅仅是一个元素,也是一个节点,所以又实现了Node接口*
-  
+
   其功能为:返回该元素所有属性节点的一个实时集合.
-  
+
   即 得到一个NameNodeMap对象的集合,此集合不是数组,所以没有数组的方法,而且其属性节点的索引顺序随浏览器不同而不同.
-  
+
   - 属性节点: 元素中的属性,比如p元素的class属性.
-    
+
     为什么叫属性节点呢?因为我们一直再强调,DOM解析的是一个对象和节点的结构集合,其节点被定义为对象,不光实现DOM的对象是节点,其属性也是节点.
-  
+
   所以若我们有这么一行代码: `console.log(table.attributes);`会得到如下的集合:
-  
+
   ```js
   amedNodeMap {
       0: border, 
@@ -500,17 +500,17 @@ $$
          length: 3
   }
   ```
-  
+
   显然,从上面的输出结果来看,这是一个NameNodeMap对象的集合,
-  
+
   且attributes属性是以字符串形式的`名:值`为一对,而每一对 `名:值`都对应一个属性节点,即对应一个元素的属性.
 
 - ***table.summary*** 
-  
+
   使用实现HTMLTableElement接口的对象,其此时使用该接口的对象的名字,即对象引用为: table,并使用其实现了HTMLTableElement接口中的属性summary,
-  
+
   其功能为:描述一个表格
-  
+
   所以 `console.log(table.summary)`将会输出里面所包含的内容.
 
 从以上的后面两个代码来看,我们一个table对象实现了3个接口,而你若不了解DOM和DOM的接口的话,你肯定只知其然而不知其所以然.
@@ -525,14 +525,14 @@ $$
 
 而这里我要讲的就是当使用实现DOM的接口的对象,其中的一些方法/属性时,会返回什么样的类型,这些返回的类型的意义又是什么?
 
-|              | 最基本也是最重要的数据类型.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|:------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| document     | 当一个成员返回 `document` 对象 （例如，元素的 `ownerDocument` 属性返回它所属于 `document` ) ，这个对象就是root `document` 对象(根文档)本身。                                                                  [DOM `document`Reference](https://developer.mozilla.org/zh-CN/docs/DOM/document) 一章对 `document` 对象进行了描述。                                                                                                                                                                                                                                                                                         |
-| element      | `element` 是指由 DOM API 中成员返回的类型为 `element` 的一个元素或节点。                                                                                 例如:  [document.createElement()](72d3d95a3d0d2cd4cb26a583243232da.html) 方法会返回一个 `node` 的对象引用，也就是说这个方法返回了在DOM中创建的 `element`。 `element` 对象实现了 DOM `Element` 接口以及更基本的 `Node` 接口，参考文档将两者都包含在内。                                                                                                                                                                                                                                           |
-|              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| nodeList     | `nodeList` 是一个元素的数组，如从 [document.getElementsByTagName()](45e0763726248a1c60e4e0b29030071d.html) 方法返回的就是这种类型。 `nodeList` 中的条目由通过下标有两种方式进行访问：       1                        list.item(1)                                                                                           2                        list[1]                                                                                                      以上这两种方式是等价的，第一种方式中 **`item()`** 是 `nodeList` 对象中的单独方法。                                                            后面的方式则使用了经典的数组语法来获取列表中的第二个条目。 |
-| attribute    | 当 `attribute` 通过成员函数 (例如，通过 **`createAttribute()`**方法) 返回时，它是一个为属性暴露出专门接口的对象引用。                                                                              DOM中的属性也是节点，就像元素一样，只不过您可能会很少使用它。                                                                                                                                                                                                                                                                                                                                                                           |
-| namedNodeMap | `namedNodeMap` 和数组类似，但是条目是由name或index访问的，虽然后一种方式仅仅是为了枚举方便，因为在 list 中本来就没有特定的顺序。                                                                                           出于这个目的，  `namedNodeMap` 有一个 item() 方法，你也可以从  `namedNodeMap` 添加或移除条目。                                                                                                                                                                                                                                                                                                                          |
+|              | 最基本也是最重要的数据类型.                           |
+| :----------: | :--------------------------------------- |
+|   document   | 当一个成员返回 `document` 对象 （例如，元素的 `ownerDocument` 属性返回它所属于 `document` ) ，这个对象就是root `document` 对象(根文档)本身。                                                                  [DOM `document`Reference](https://developer.mozilla.org/zh-CN/docs/DOM/document) 一章对 `document` 对象进行了描述。 |
+|   element    | `element` 是指由 DOM API 中成员返回的类型为 `element` 的一个元素或节点。                                                                                 例如:  [document.createElement()](72d3d95a3d0d2cd4cb26a583243232da.html) 方法会返回一个 `node` 的对象引用，也就是说这个方法返回了在DOM中创建的 `element`。 `element` 对象实现了 DOM `Element` 接口以及更基本的 `Node` 接口，参考文档将两者都包含在内。 |
+|              |                                          |
+|   nodeList   | `nodeList` 是一个元素的数组，如从 [document.getElementsByTagName()](45e0763726248a1c60e4e0b29030071d.html) 方法返回的就是这种类型。 `nodeList` 中的条目由通过下标有两种方式进行访问：       1                        list.item(1)                                                                                           2                        list[1]                                                                                                      以上这两种方式是等价的，第一种方式中 **`item()`** 是 `nodeList` 对象中的单独方法。                                                            后面的方式则使用了经典的数组语法来获取列表中的第二个条目。 |
+|  attribute   | 当 `attribute` 通过成员函数 (例如，通过 **`createAttribute()`**方法) 返回时，它是一个为属性暴露出专门接口的对象引用。                                                                              DOM中的属性也是节点，就像元素一样，只不过您可能会很少使用它。 |
+| namedNodeMap | `namedNodeMap` 和数组类似，但是条目是由name或index访问的，虽然后一种方式仅仅是为了枚举方便，因为在 list 中本来就没有特定的顺序。                                                                                           出于这个目的，  `namedNodeMap` 有一个 item() 方法，你也可以从  `namedNodeMap` 添加或移除条目。 |
 
 # DOM中核心接口包括其属性/方法
 
@@ -613,15 +613,15 @@ Node接口的的属性一般是从其父接口EventTarget接口继承的属性
 以下列出一些基本属性
 
 - [`Node.firstChild`](ebf533857b199391700e5a3a86ba1675.html) 只读
-  
+
   返回该节点的第一个子节点[`Node`](6d874204ab61ba862524362521782495.html)，如果该节点没有子节点则返回`null`。
 
 - [`Node.isConnected`](1f9741d73877854dac0c417539005b61.html)只读
-  
+
   返回一个布尔值用来检测该节点是否已连接(直接或者间接)到一个上下文对象上，比如通常DOM情况下的[`Document`](186d4bd4eb897b1283583d3be6646c5a.html)对象，或者在shadow DOM情况下的[`ShadowRoot`](ea23f9f7540b4f49bae3d76e5395b17e.html)对象。
 
 - [`Node.lastChild`](31e5ac9da84b87aaed257490a3edcc8e.html) 只读
-  
+
   返回该节点的最后一个子节点[`Node`](6d874204ab61ba862524362521782495.html)，如果该节点没有子节点则返回`null`。
 
 #### Node接口的方法
@@ -631,12 +631,12 @@ Node接口的的属性一般是从其父接口EventTarget接口继承的属性
 以下同样列出一些基本方法
 
 - [`Node.appendChild()`](4ff59414a10a614df68977372ed8c227.html)
-  
+
   将指定的 childNode 参数作为最后一个子节点添加到当前节点。
   如果参数引用了 DOM 树上的现有节点，则节点将从当前位置分离，并附加到新位置。
 
 - [`Node.cloneNode()`](da55cfee3e02974fbde9ef5195f88060.html)
-  
+
   克隆一个 [`Node`](6d874204ab61ba862524362521782495.html)，并且可以选择是否克隆这个节点下的所有内容。默认情况下，节点下的内容会被克隆。
 
 - [`Node.compareDocumentPosition()`](f2d0f663aa12218096d934ee0813445e.html)
@@ -644,17 +644,17 @@ Node接口的的属性一般是从其父接口EventTarget接口继承的属性
 - 比较当前节点与文档中的另一节点的位置。
 
 - [`Node.contains()`](46b588ed07795e3ed025c730450622d9.html)
-  
+
   返回一个 [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Boolean) 布尔值，来表示传入的节点是否为该节点的后代节点。
 
 - [`Node.getRootNode()`](5650ac3172a7bcb65ddc0395d1eaee8e.html)
-  
+
   返回上下文对象的根结点。如果shadow root节点存在的话，也可以在返回的节点中包含它。
 
 - [`Node.removeChild()`](c3a14a0b906d819cee6e5f0441154e15.html)
-  
+
   Removes a child node from the current element, which must be a child of the current node.
-  
+
   ---从当前元素中移除子节点，该子节点必须是当前节点的子节点。其返回值为:返回删除的节点。
 
 #### 示例
@@ -671,13 +671,13 @@ function removeAllChildren(element){
 ```
 
 - element代表文档的某个元素,也就是节点,即节点对象.
-  
+
   这个节点对象实现了Node接口,Element接口等等. 
-  
+
   它现在使用的firstChild()方法属于Node接口的方法,或者说属于Node接口的父接口:EventTarget.
-  
+
   只不过对象的firstChild()方法是接口的firstChild()方法具体的实现,因为接口的方法是没有方法体的.
-  
+
   → 对象的element.removeChild()是接口Element.removeChild()的具体实现.
 
 ### Element接口
@@ -714,19 +714,19 @@ Element接口描述了所有相同种类的元素(节点对象)具有的方法�
 以下列出一些基本的属性
 
 - [`Element.attributes`](e34319273d0fedf6d30048b81ec9bc30.html) 只读
-  
+
   返回一个与该元素相关的所有属性集合 [`NamedNodeMap`](173aa2c7d6f60498274e46225e225a92.html)。
 
 - [`Element.classList`](9cf1dc658e67584ea4088c4acc310527.html) 只读
-  
+
   返回该元素包含的 class 属性，是一个 [`DOMTokenList`](a86842b95a2aaab5b9c60a07398503c6.html)。
 
 - [`Element.className`](cb001ffbab4ab0a1db6c41f1e99da280.html)
-  
+
   一个 [`DOMString`](a475d816c1f8f89d5fa81ca3ec633ceb.html)，表示这个元素的 class。
 
 - [`Element.clientHeight`](3d9ce1f1e39718d28cca88fbbb6f64ff.html) 只读
-  
+
   返回[`Number`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number) 表示内部相对于外层元素的高度。
 
 #### Element接口的方法
@@ -738,19 +738,19 @@ Element接口的方法和它的属性差不多,也继承自别的接口.
 以下为一些基本的方法
 
 - [`Element.getElementsByClassName()`](18566f1b4216f4a2ad89f026f6ce486f.html)
-  
+
   参数中给出类的列表，返回一个动态的HTMLCollection ，包含了所有持有这些类的后代元素。
 
 - [`Element.getElementsByTagName()`](66e53c97b775f8508b51d676e6621247.html)
-  
+
   返回一个活动的HTMLCollection，包含来自当前元素的特定标记名的所有后代元素。
 
 - [`Element.getElementsByTagNameNS()`](319d70c3832f843220683a538c8fb661.html)
-  
+
   从当前元素返回包含特定标记名称和命名空间的所有子代元素的活动HTMLCollection。
 
 - [`Element.hasAttribute()`](1620d9f17268e22b43a7d06b33be8f30.html)
-  
+
   返回一个布尔值 [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Boolean)，指示元素是否具有指定的属性。
 
 #### Element接口的事件
@@ -766,17 +766,17 @@ Element接口的方法和它的属性差不多,也继承自别的接口.
 以下列出一些基本的事件类型.
 
 - [cancel](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/cancel_event)
-  
+
   当用户指示浏览器希望关闭当前打开的对话框时，触发<dialog>。
   例如，当用户按下Esc键或单击作为浏览器UI一部分的“关闭对话框”按钮时，浏览器可能触发此事件。
-  
+
   也可以通过oncancel属性获得。
 
 - [error](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/error_event)
-  
+
   当资源加载失败或无法使用时触发。
   例如，如果脚本执行错误或无法找到图像或无效。
-  
+
   也可以通过onerror属性获得。
 
 还有一些各种事件: 如
@@ -841,19 +841,19 @@ x.write('x'); // 会报错,错吧实现Docemnt()构造函数的对象x当作实�
 这些属性继承自Node接口和EventTarget接口.以下列出MDN中列出的属性,当然只是极少的一部分.
 
 - [`Document.anchors`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/anchors) 只读
-  
+
   返回文档中所有锚点元素的列表。
 
 - [`Document.scripts`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/scripts) 只读
-  
+
   返回文档中所有的[<script>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)元素。
 
 - [`Document.domain`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/domain)
-  
+
   获取或设置当前文档的域名。
 
 - [`Document.cookie`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie)
-  
+
   返回一个使用分号分隔的 cookie 列表，或设置（写入）一个 cookie。
 
 - ...
@@ -945,11 +945,11 @@ WindowOrWorkerGlobalScope mixin是对 Window 和WorkerGlobalScope 接口的公�
  这些属性由WindowOrWorkerGlobalScope mixin 定义，同时被 Window 和 WorkerGlobalScope的对象实现。
 
 - WindowOrWorkerGlobalScope.caches只读
-  
+
   返回与当前上下文相关联的CacheStorage 对象。这个对象提供了一些功能，例如存储可供离线使用的 asstes，以及对 requests 生成自定义的 responses 。
 
 - WindowOrWorkerGlobalScope.indexedDB只读
-  
+
   提供一种机制，以供应用可以异步访问 indexed databases；返回  IDBFactory 对象。
 
 ### 方法
@@ -957,11 +957,11 @@ WindowOrWorkerGlobalScope mixin是对 Window 和WorkerGlobalScope 接口的公�
 以下方法由 WindowOrWorkerGlobalScope mixin 定义，同时被 Window 和 WorkerGlobalScope 实现。
 
 - WindowOrWorkerGlobalScope.atob()
-  
+
   对 base-64加密的数据字符串进行解码。
 
 - WindowOrWorkerGlobalScope.btoa()
-  
+
   从二进制数据中创建 base-64 编码的 ASCII 字符串。
 
 # DOM存在Level
@@ -993,7 +993,7 @@ BOM: Browser Object Model,浏览器对象模型
 而且因为没有相关的标准,所以每个浏览器都有自己的BOM实现,这就更加证明了在没有BOM的脚本语言中,它们实现DOM时,就也实现了BOM,因为浏览器其实已经默认自己实现了BOM,且将BOM与DOM关联.
 
 > *有了DOM将节点定义成对象,就能通过实现DOM的接口的对象(这些节点对象就是实现了DOM的接口)就能轻松操作整个网页,在配合上独属于JavaScript的BOM,浏览器会被我们玩弄于股掌之间.*
-> 
+>
 > *而没有BOM的脚本语言也无需担心,因为BOM对于每个现代浏览器来说都是默认实现且和DOM关联的,也就是其余脚本语言只要实现DOM,也有BOM的功能.*
 
 不过虽说每个浏览器都有自己的BOM实现,但是有一些事实上的标准(不成文的规定),比如浏览器都具有一个窗口对象和一个导航对象,但是每种浏览器可以为这些对象或其他对象定义自己的属性和方法,也就是扩展了功能.

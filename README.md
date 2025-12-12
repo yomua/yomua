@@ -10,6 +10,8 @@ Author: Yomua
 
 3. `yarn start-dev`
 
+注意: `git commit` 时, 如果更改了文章, 则需要先 `yarn build-article`, 这个是为了更新文章最新提交时间
+
 可选
 
 -   `yarn build` 生成编译后结果。
@@ -440,7 +442,9 @@ Reference: src/pages/feature - dynamicFeature.tsx
 
 # FAQ
 
--   目前文章中的图片出现了问题; 因为我们现在使用了 history 路由模式,
+-   已修改, 每次写文章的时, 都需要注意
+
+    目前文章中的图片出现了问题; 因为我们现在使用了 history 路由模式,
 
     导致如果文章中的图片是 `[picture/xx.png]` 这样的相对路径时,
 
@@ -471,5 +475,7 @@ Reference: src/pages/feature - dynamicFeature.tsx
     `../../picture` -> `/picture`
 
     `../picture` -> `/picture`
+
+    `././picture/` -> `/picture/`
 
     `./picture/` -> `/picture/`

@@ -14,10 +14,10 @@ export default defineConfig({
     /**
      * https://webpack.docschina.org/configuration/output/#outputpublicpath
      * https://v3.umijs.org/zh-CN/config#publicpath
-     * 从哪个路径获取前端资源. 
+     * 从哪个路径获取前端资源.
      * /: 通过根路径访问到前端资源, 如: 访问 http://www.whyh.com/a/b/c, 则从 http://www.whyh.com/ 开始查找前端资源
      * ./: 从当前路径开始查找前端资源, 如: 访问 http://www.whyh.com/a/b/c, 则从 http://www.whyh.com/a/b/c 开始查找前端资源
-     */ 
+     */
     publicPath: '/',
     title: 'Yomua',
     favicon: '/assets/favicon.png',
@@ -52,7 +52,7 @@ export default defineConfig({
     webpack5: {},
     // 全局注入 less 文件
     lessLoader: {
-        // Reference： https://juejin.cn/s/less-loader%20modifyvars%20hack
+        // Reference： https://stackoverflow.com/questions/60809336/customizing-ant-designs-theme-what-exactly-is-that-hack-key-in-the-modifyva
         modifyVars: {
             hack: 'true; @import "~@/assets/less/_index.less";',
         },

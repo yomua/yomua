@@ -1,8 +1,4 @@
-[TOC]
-
-
-
-# 名称规定
+# 名称规定d
 
 XHR = XMLHttpRequest
 
@@ -146,7 +142,7 @@ AJAX就如同定义说的那般一样,是一套多项技术的集合体,所以AJ
   ​	没有恰当的预读数据，或者对XMLHttpRequest的不恰当处理，都会使用户感到厌烦[7]。
 
   ​	通常的解决方案是，使用一个可视化的组件来告诉用户系统正在进行后台操作并且正在读取数据和内容。
-  
+
   > ​		比如,浏览器的下载功能,当我们随意去一个网页中下载某个文件时,就需要向服务器提交请求,而这个请求通常来说也是异步请求.
   >
   > ​		但是你有没有发现,网页会弹出一个下载记录条提示你下载(从服务器返回的数据)到哪里了,是不是?
@@ -216,7 +212,7 @@ AJAX就如同定义说的那般一样,是一套多项技术的集合体,所以AJ
 - JavaScript和HTML DOM
 
   用来处理、显示或使用数据
-  
+
 
 `XHR对象: 客户端与服务器进行交互的接口` 
 
@@ -364,9 +360,9 @@ XMLHttpRequest接口继承了XMLHttpRequestEventTarget接口和 EventTarget接�
 
   也就是指的是实现XMLHttpRequest接口的对象.
 
-| 值   | 状态               | 描述                                                         |
-| ---- | ------------------ | ------------------------------------------------------------ |
-| `0`  | `UNSENT`           | 代理被创建，但尚未调用 open() 方法。                         |
+| 值    | 状态                 | 描述                                       |
+| ---- | ------------------ | ---------------------------------------- |
+| `0`  | `UNSENT`           | 代理被创建，但尚未调用 open() 方法。                   |
 | `1`  | `OPENED`           | `open()` 方法已经被调用。                                                在这个状态中,可以通过 setRequestHeader()方法来设置请求的头部,可以调用 send()方法来发起请求。 |
 | `2`  | `HEADERS_RECEIVED` | `send()` 方法已经被调用，并且头部和状态已经可获得,即响应头也已经被接收在.                                                    也就是说请求已经发送给服务器,此请求已经被服务器接收.                                                                                                                               若send()方法只要使用,可以说 头部和状态是必能获得的,因为就算没有使用setRequestHeader()设置头部,send()也会发送一个默认值得头部到服务器. |
 | `3`  | `LOADING`          | 下载中； `responseText` 属性已经包含部分数据。         即响应体部分正在被接收,如果 `responseType` 属性是“text”或空字符串， `responseText` 将会在载入的过程中拥有部分响应数据。                                                             注意:在此状态时,XHR对象已经获取到了来自服务器响应的数据了. |
@@ -481,11 +477,11 @@ xhr.send(null);
   ​	设置HTTP请求头部的数据.此方法若使用,则只能在open()和send()方法之间使用.
 
   ​    如果没有设置 [`Accept`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept) 属性，则此发送出[`send()`](af2451b80072fcb6fa29eb6f688860ca.html) 的值为此属性的默认值`*/*` 。
-  
+
   ​	也就是send()发送出的Accept(Accept 请求头用来告知（服务器）客户端可以处理的内容类型)值为:`*/*`
-  
+
   ***在AJAX示例的AJAX请求中有详细说明.***
-  
+
 - XMLHttpRequest.send()
 
   发送请求。如果请求是异步的（默认），那么该方法将在请求发送后立即返回。
@@ -665,8 +661,8 @@ Element，document 和 window 是最常见的事件目标，但是其他对象�
   同时此属性也可以用到HTML来.详情请看: `AJAK示例 - GET方法示例 -使用XML文档作为服务器上的文件 - XHR.responseXML`
 
   注：若你将 responseType 属性设置为 “Docuemnt”，则 responseXML 属性将以 HTML DOM 的形式返回。
-  
-  
+
+  ​
 
 ## 方法
 
@@ -1450,7 +1446,6 @@ content-length: 1607
 
    ​	得到结果:Tue, 21 May 2019 05:46:36 GMT
 
-   
 
    
 
@@ -1560,18 +1555,17 @@ content-length: 1607
   ​	即:这是因为XHR对象状态包括一个unset,即未调用open()方法,所以为了保证XHR对象的状态至少都可能存在,
 
   ​	所以把onreadystatechange()方法放到开头.否则将此方法写到open()的下面,就不存在unset状态了.
-  
+
 - setRequestHeader()方法,例如:
 
   ```js
   xhr.setRequestHeader(
-  
+
   	"Content-Type", "application/x-www-form-urlencoded"
-  
+
   );
   ```
 
-  
 
 ### 使用回调函数完成请求
 
@@ -1777,9 +1771,9 @@ let x, i, xhr, xmlDoc, table;
 - ***table = "\<tr>\<th>艺术家\</th>\<th>曲目\</th>\</tr>";***
 
   其目的创建一个表格,包含:一行两列(其中列是表头)
-  
+
   而table变量则是这个表格的表头
-  
+
 -  ***for (i = 0; i < x.length; i++) {...}***
 
   ​	此循环的目的是显而易见的.
