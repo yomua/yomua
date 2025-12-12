@@ -182,7 +182,7 @@ props 是接收来自父组件的数据（data{} / data()）给子组件使用�
 
 - 生命周期和生命周期钩子函数，***参见：<UseCustomElements.md>***
 
-![](../picture/Vue生命周期钩子函数图示.png)
+![](/picture/Vue生命周期钩子函数图示.png)
 
 （Vue生命周期钩子函数图示）
 
@@ -402,7 +402,7 @@ data: {
 
 - *参见：[API - Vue  Data](https://cn.vuejs.org/v2/api/#data)*
 
-data() 注册子组件时使用，必须为一个函数，参见： [data 必须是一个函数](https://cn.vuejs.org/v2/guide/components.html#data-%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0)。
+data() 注册子组件时使用，必须为一个函数，参见： [data 必须是一个函数](https://v2.cn.vuejs.org/v2/guide/components.html#data-%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0)。
 
 当你使用如 Vue.component() 这样的一个函数去注册一个组件时，该组件所对应的选项配置对象中的 data 属性必须为一个 Functional。
 
@@ -435,7 +435,7 @@ data() 注册子组件时使用，必须为一个函数，参见： [data 必须
 
 - [Vue.component( id, definition)](https://cn.vuejs.org/v2/api/#Vue-component)
 
-如若以上的 data 是一个对象，则每次单击不同按钮， {{count}} 都会共享。参见：[data 必须是一个函数](https://cn.vuejs.org/v2/guide/components.html#data-%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0)
+如若以上的 data 是一个对象，则每次单击不同按钮， {{count}} 都会共享。参见：[data 必须是一个函数](https://v2.cn.vuejs.org/v2/guide/components.html#data-%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0)
 
 而之所以为每个组件选项配置对象使用 data()  就能使的它们都有独立的 data 属性，是因为函数具有作用域，每一个函数运行完毕，垃圾回收机制就会执行，消除函数中的无用声明。
 
@@ -444,11 +444,11 @@ data{} 根组件使用，必须为一个对象
 
 ## [路由](https://router.vuejs.org/zh/)
 
-### [编程式导航](https://router.vuejs.org/zh/guide/essentials/navigation.html#%E7%BC%96%E7%A8%8B%E5%BC%8F%E7%9A%84%E5%AF%BC%E8%88%AA)
+### [编程式导航](https://v3.router.vuejs.org/zh/guide/essentials/navigation.html)
 
 除了使用 `<router-link>` 创建 a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现。
 
-### [router.push(location, onComplete?, onAbort?)](https://router.vuejs.org/zh/guide/essentials/navigation.html#router-push-location-oncomplete-onabort)
+### [router.push(location, onComplete?, onAbort?)](https://v3.router.vuejs.org/zh/guide/essentials/navigation.html#router-push-location-oncomplete-onabort)
 
 **注意：在 Vue 实例内部，你可以通过 `$router` 访问路由实例。因此你可以调用 `this.$router.push`。**
 
@@ -495,7 +495,7 @@ vm.$watch('a', function (newValue, oldValue) {
 
 [this.$route](https://router.vuejs.org/zh/api/#%E8%B7%AF%E7%94%B1%E5%AF%B9%E8%B1%A1)：则是表示当前正在跳转的路由对象，该对象是只读对象，里面可以获取name、path、query、params等
 
-![](../picture/VueRouter-$routerAND$route.png)
+![](/picture/VueRouter-$routerAND$route.png)
 
 （$router 和 $route）
 
