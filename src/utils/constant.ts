@@ -65,7 +65,7 @@ enum ENV_KEY {
     SCROLL_SPEED = 'SCROLL_SPEED',
     ARTICLE_DIR = 'ARTICLE_DIR',
     WRITE_ARTICLE_DIR = 'WRITE_ARTICLE_DIR',
-    ARTICLE_PICtURE = 'ARTICLE_PICtURE',
+    ARTICLE_PICTURE = 'ARTICLE_PICTURE',
     ARTICLE_SUFFIX_NAME = 'ARTICLE_SUFFIX_NAME',
     ARTICLE_COMMIT_LAST_DATE = 'ARTICLE_COMMIT_LAST_DATE',
 }
@@ -158,7 +158,7 @@ export const ARTICLE_SUFFIX_NAME = getEnvValue<'array', string>(
 
 export const ARTICLE_DIR = getEnvValue<'string'>(ENV_KEY.ARTICLE_DIR)
 
-export const ARTICLE_PICtURE = getEnvValue<'string'>(ENV_KEY.ARTICLE_PICtURE)
+export const ARTICLE_PICTURE = getEnvValue<'string'>(ENV_KEY.ARTICLE_PICTURE)
 
 export const WRITE_ARTICLE_DIR = getEnvValue<'string'>(
     ENV_KEY.WRITE_ARTICLE_DIR,

@@ -12,7 +12,7 @@ import {
 
 import style from './index.less'
 // import Footer from './layouts/footer'
-import { Sidebar } from './component'
+import { Sidebar, ErrorBoundary } from './component'
 import Header from './layouts/header'
 import storage from './utils/storage'
 import { ThemeProvider } from './contexts'
@@ -63,18 +63,20 @@ const Index = (props: { children: React.ReactNode }) => {
     }, [])
 
     return (
-        <ThemeProvider theme={theme}>
-            <Layout className={style.layout}>
-                <Header theme={theme} onToggleTheme={handleChangeTheme} />
+        <ErrorBoundary>
+            <ThemeProvider theme={theme}>
+                <Layout className={style.layout}>
+                    <Header theme={theme} onToggleTheme={handleChangeTheme} />
 
-                <Layout.Content className={style.container}>
-                    <Sidebar />
-                    {props.children}
-                </Layout.Content>
+                    <Layout.Content className={style.container}>
+                        <Sidebar />
+                        {props.children}
+                    </Layout.Content>
 
-                {/* <Footer /> */}
-            </Layout>
-        </ThemeProvider>
+                    {/* <Footer /> */}
+                </Layout>
+            </ThemeProvider>
+        </ErrorBoundary>
     )
 }
 

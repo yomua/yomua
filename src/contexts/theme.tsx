@@ -5,7 +5,7 @@ interface ThemeProviderProps {
     children: React.ReactNode
 }
 
-export const ThemeContext = createContext('light')
+export const ThemeContext = createContext<Theme>('light')
 
 const ThemeProvider = (props: ThemeProviderProps) => {
     const { theme } = props

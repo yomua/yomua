@@ -1,7 +1,7 @@
 // Ref: https://github.com/parksben/markdown-navbar
 // 基于此库进行二次开发
 // 此组件也完全解耦, 可以作为一个新包发布.
-import { useState, useEffect, memo } from 'react'
+import { useState, useEffect, useRef, memo } from 'react'
 
 import { useTheme } from '@/hooks'
 
@@ -13,9 +13,6 @@ import {
 } from './utils'
 import './index.less'
 import { debounce } from '@yomua/y-screw'
-
-let addTargetTimeout: NodeJS.Timeout
-let scrollTimeout: NodeJS.Timeout
 
 type MarkdownNavbarProps = {
     headingTopOffset: number
@@ -34,6 +31,10 @@ type MarkdownNavbarProps = {
 export default memo(function MarkdownNavbar(props: MarkdownNavbarProps) {
     const theme = useTheme()
 
+    // 使用 useRef 替代模块级全局变量, 避免多实例共享 timeout 导致互相干扰
+    const addTargetTimeoutRef = useRef<NodeJS.Timeout>()
+    const scrollTimeoutRef = useRef<NodeJS.Timeout>()
+
     const [currentListNo, setCurrentListNo] = useState('')
 
     const [navStructure, setNavStructure] = useState<
@@ -46,8 +47,8 @@ export default memo(function MarkdownNavbar(props: MarkdownNavbarProps) {
     >([])
 
     function refreshNav(source) {
-        if (addTargetTimeout) {
-            clearTimeout(addTargetTimeout)
+        if (addTargetTimeoutRef.current) {
+            clearTimeout(addTargetTimeoutRef.current)
         }
 
         const navStructure = getNavStructure(source)
@@ -56,11 +57,11 @@ export default memo(function MarkdownNavbar(props: MarkdownNavbarProps) {
     }
 
     function scrollToTarget(dataId: string) {
-        if (scrollTimeout) {
-            clearTimeout(scrollTimeout)
+        if (scrollTimeoutRef.current) {
+            clearTimeout(scrollTimeoutRef.current)
         }
 
-        scrollTimeout = setTimeout(() => {
+        scrollTimeoutRef.current = setTimeout(() => {
             const target = document.querySelector(
                 `[data-id="${dataId}"]`,
             ) as HTMLElement
@@ -184,7 +185,7 @@ export default memo(function MarkdownNavbar(props: MarkdownNavbarProps) {
             scrollToTarget(headingId)
         }
 
-        addTargetTimeout = setTimeout(() => {
+        addTargetTimeoutRef.current = setTimeout(() => {
             initHeadingsId()
             if (navStructure.length) {
                 const { listNo } = navStructure[0]
@@ -197,12 +198,12 @@ export default memo(function MarkdownNavbar(props: MarkdownNavbarProps) {
         document.addEventListener('scroll', winScroll, false)
 
         return () => {
-            if (addTargetTimeout) {
-                clearTimeout(addTargetTimeout)
+            if (addTargetTimeoutRef.current) {
+                clearTimeout(addTargetTimeoutRef.current)
             }
 
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout)
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current)
             }
 
             document.removeEventListener('scroll', winScroll, false)
@@ -222,9 +223,7 @@ export default memo(function MarkdownNavbar(props: MarkdownNavbarProps) {
                 return (
                     <div
                         className={cls}
-                        key={`title_anchor_${Math.random()
-                            .toString(36)
-                            .substring(2)}`}
+                        key={`title_anchor_${t.listNo}`}
                         onClick={(evt) => {
                             const currentHash = props.declarative
                                 ? `${t.listNo}-${t.text}` // 加入 listNo 确保 hash 唯一 ZZ

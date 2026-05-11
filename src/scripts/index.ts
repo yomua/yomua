@@ -4,7 +4,7 @@ import path from 'path'
 import {
     ARTICLE_DIR,
     WRITE_ARTICLE_DIR,
-    ARTICLE_PICtURE,
+    ARTICLE_PICTURE,
     ARTICLE_SUFFIX_NAME,
 } from '../utils/constant'
 
@@ -23,7 +23,7 @@ const currentWorkingDir = process.cwd()
 const articleDir = path.join(currentWorkingDir, ARTICLE_DIR)
 
 // 写入文章图片的目录
-const articlePictureDir = path.join(currentWorkingDir, ARTICLE_PICtURE)
+const articlePictureDir = path.join(currentWorkingDir, ARTICLE_PICTURE)
 
 // 生成文件目录树, 并认为以 ARTICLE_SUFFIX_NAME 数组中的值为后缀名的目录是文件
 const folderStructure = generateArticleFolderStructure(articleDir, {

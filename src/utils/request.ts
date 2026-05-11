@@ -148,11 +148,13 @@ async function request<Result = any>(
     }
 
     // 调用请求拦截
-    interceptorsMap.request?.forEach(async ({ onFulfilled, onRejected }) => {
+    // 使用 for...of 而非 forEach, 确保拦截器按顺序串行执行,
+    // 且正确 await 异步拦截器, 避免 options 被赋值为 Promise 对象
+    for (const { onFulfilled } of interceptorsMap.request ?? []) {
         if (onFulfilled) {
             options = onFulfilled(options)
         }
-    })
+    }
 
     return fetch(url, options)
         .then(checkResponse)

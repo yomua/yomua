@@ -102,7 +102,7 @@ export function getNavStructure(source) {
         }
     })
     const matchStack: { level: number; arr: number[] }[] = []
-    // 此部分重构，原有方法会出现次级标题后再次出现高级标题时，listNo重复的bug
+    // 此部分重构，原有方法会出现次级标题后再次出现高级标题时， listNo 重复的bug
     for (let i = 0; i < navData.length; i++) {
         const t = navData[i]
         const { level } = t

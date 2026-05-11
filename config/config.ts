@@ -10,6 +10,18 @@ const getEnvConfig = () => {
     return process.env
 }
 
+// 运行时需要注入到浏览器的 .env 变量白名单
+// 注意: 仅注入业务需要的环境变量, 避免将系统环境变量 (如 PATH, HOME 等) 泄露到前端代码
+const RUNTIME_ENV_WHITELIST = [
+    'NODE_ENV',
+    'SCROLL_SPEED',
+    'ARTICLE_SUFFIX_NAME',
+    'ARTICLE_COMMIT_LAST_DATE',
+    'ARTICLE_DIR',
+    'ARTICLE_PICTURE',
+    'WRITE_ARTICLE_DIR',
+]
+
 export default defineConfig({
     /**
      * https://webpack.docschina.org/configuration/output/#outputpublicpath
@@ -91,13 +103,19 @@ export default defineConfig({
         //     })
         //     .end()
 
-        const umiEnv = process.env
-
-        // 注入 .env 中的配置到 process.env, 同时保留 umi env
+        // 注入 .env 中的配置到 process.env, 仅注入白名单内的变量, 避免泄露系统环境变量
         // 这样就可以在运行时(跑到浏览器的时候)使用 process.env 获取对应的 env 的变量 (通过 src/utils/constant)
+        const allEnv = { ...getEnvConfig(), ...process.env }
+        const safeEnv: Record<string, string | undefined> = {}
+        RUNTIME_ENV_WHITELIST.forEach((key) => {
+            if (allEnv[key] !== undefined) {
+                safeEnv[key] = allEnv[key]
+            }
+        })
+
         config.plugin('define').use(webpack.DefinePlugin, [
             {
-                'process.env': JSON.stringify({ ...getEnvConfig(), ...umiEnv }),
+                'process.env': JSON.stringify(safeEnv),
             },
         ])
 
